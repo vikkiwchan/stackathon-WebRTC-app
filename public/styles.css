@@ -1,0 +1,15 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #e6ddca;
+}
+
+p {
+  font-family: 'Playfair Display', serif;
+  color: #303030;
+}
+
+h2 {
+  font-family: 'Josefin Sans', sans-serif;
+  color: #576636;
+}
