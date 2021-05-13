@@ -10,10 +10,10 @@ import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
 const theme = createMuiTheme({
   typography: {
     h2: {
-      fontFamily: 'Josefin Sans, sans-serif',
+      fontFamily: 'Poppins, sans-serif',
     },
     p: {
-      fontFamily: 'Playfair Display, serif',
+      fontFamily: 'Source Sans Pro, serif',
     },
   },
 });
