@@ -26,12 +26,12 @@ export const ContextProvider = ({ children }) => {
   useEffect(() => {
     const getMedia = async () => {
       try {
-        let currStream = await navigator.mediaDevices.getUserMedia({
+        let currentStream = await navigator.mediaDevices.getUserMedia({
           video: true,
           audio: true,
         });
-        setStream(currStream);
-        myVideo.current.srcObject = currStream;
+        setStream(currentStream);
+        myVideo.current.srcObject = currentStream;
 
         // want id so we can set id in state
         socket.on('me', (id) => setMe(id));
@@ -57,8 +57,8 @@ export const ContextProvider = ({ children }) => {
       socket.emit('answerCall', { signal: data, to: call.from });
     });
 
-    peer.on('stream', (currStream) => {
-      otherVideo.current.srcObject = currStream;
+    peer.on('stream', (currentStream) => {
+      otherVideo.current.srcObject = currentStream;
     });
 
     peer.signal(call.signal);
@@ -71,7 +71,7 @@ export const ContextProvider = ({ children }) => {
 
     peer.on('signal', (data) => {
       socket.emit('callUser', {
-        userToCall: id,
+        callee: id,
         signalData: data,
         from: me,
         name,

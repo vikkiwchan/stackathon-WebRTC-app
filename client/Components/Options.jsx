@@ -56,7 +56,7 @@ const Options = ({ children }) => {
         <form className={classes.root} noValidate autoComplete='off'>
           <Grid container className={classes.gridContainer}>
             <Grid item xs={12} md={6} className={classes.padding}>
-              <Typography gutterBotton variant='h6'>
+              <Typography gutterBottom variant='h6'>
                 Account Information
               </Typography>
               <TextField
@@ -65,6 +65,7 @@ const Options = ({ children }) => {
                 onChange={(event) => setName(event.target.value)}
                 fullWidth
               />
+              {console.log(me)}
               <CopyToClipboard text={me} className={classes.margin}>
                 <Button
                   variant='contained'
@@ -77,7 +78,7 @@ const Options = ({ children }) => {
               </CopyToClipboard>
             </Grid>
             <Grid item xs={12} md={6} className={classes.padding}>
-              <Typography gutterBotton variant='h6'>
+              <Typography gutterBottom variant='h6'>
                 Call Someone
               </Typography>
               <TextField
