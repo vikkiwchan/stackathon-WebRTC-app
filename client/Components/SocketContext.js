@@ -7,7 +7,7 @@ import Peer from 'simple-peer';
 export const SocketContext = createContext();
 
 // once we deploy application we can pass full url of deployed server
-const socket = io('http://localhost:3000');
+const socket = io('https://stackathon-video-chat-app.herokuapp.com/');
 
 // useState will be used to run everything needed for video chat to work
 export const ContextProvider = ({ children }) => {
