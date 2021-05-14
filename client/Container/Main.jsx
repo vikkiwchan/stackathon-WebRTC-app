@@ -1,6 +1,5 @@
 import React from 'react';
-import { Typography, AppBar } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { Typography, AppBar, makeStyles } from '@material-ui/core';
 
 import Notifications from '../Components/Notifications.jsx';
 import Options from '../Components/Options.jsx';

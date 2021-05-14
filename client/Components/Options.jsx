@@ -6,8 +6,8 @@ import {
   Typography,
   Container,
   Paper,
+  makeStyles,
 } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { Assignment, Phone, PhoneDisabled } from '@material-ui/icons';
 
@@ -44,9 +44,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Options = ({ children }) => {
-  const { me, callAccepted, callEnded, name, setName, leaveCall, callUser } =
+  const { me, callAccepted, name, setName, callEnded, leaveCall, callUser } =
     useContext(SocketContext);
-
   const [idToCall, setIdToCall] = useState('');
   const classes = useStyles();
 
@@ -57,15 +56,14 @@ const Options = ({ children }) => {
           <Grid container className={classes.gridContainer}>
             <Grid item xs={12} md={6} className={classes.padding}>
               <Typography gutterBottom variant='h6'>
-                Account Information
+                Account Info
               </Typography>
               <TextField
                 label='Name'
                 value={name}
-                onChange={(event) => setName(event.target.value)}
+                onChange={(e) => setName(e.target.value)}
                 fullWidth
               />
-              <h6>use this id:{me}</h6>
               <CopyToClipboard text={me} className={classes.margin}>
                 <Button
                   variant='contained'
@@ -73,18 +71,18 @@ const Options = ({ children }) => {
                   fullWidth
                   startIcon={<Assignment fontSize='large' />}
                 >
-                  Copy ID
+                  Copy Your ID
                 </Button>
               </CopyToClipboard>
             </Grid>
             <Grid item xs={12} md={6} className={classes.padding}>
               <Typography gutterBottom variant='h6'>
-                Call Someone
+                Make a call
               </Typography>
               <TextField
-                label='ID to Call'
+                label='ID to call'
                 value={idToCall}
-                onChange={(event) => setIdToCall(event.target.value)}
+                onChange={(e) => setIdToCall(e.target.value)}
                 fullWidth
               />
               {callAccepted && !callEnded ? (
@@ -96,7 +94,7 @@ const Options = ({ children }) => {
                   onClick={leaveCall}
                   className={classes.margin}
                 >
-                  End Call
+                  Hang Up
                 </Button>
               ) : (
                 <Button
