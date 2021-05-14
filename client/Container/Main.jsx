@@ -30,7 +30,7 @@ const Main = () => {
   return (
     <div className={classes.wrapper}>
       <Typography variant='h2' align='center' className={classes.header}>
-        Hello World
+        Virtual Coffee Chat
       </Typography>
       <VideoPlayer />
       <Options>
