@@ -7,7 +7,6 @@ import Peer from 'simple-peer';
 export const SocketContext = createContext();
 
 // once we deploy application we can pass full url of deployed server
-const socket = io('https://stackathon-video-chat-app.herokuapp.com/');
 
 // useState will be used to run everything needed for video chat to work
 export const ContextProvider = ({ children }) => {
@@ -24,6 +23,7 @@ export const ContextProvider = ({ children }) => {
 
   // as soon as page loads we want to get permission to use video & audio from user's camera
   useEffect(() => {
+    const socket = io(window.location.origin);
     const getMedia = async () => {
       try {
         let currentStream = await navigator.mediaDevices.getUserMedia({
@@ -34,7 +34,10 @@ export const ContextProvider = ({ children }) => {
         myVideo.current.srcObject = currentStream;
 
         // want id so we can set id in state
-        socket.on('me', (id) => setMe(id));
+        socket.on('me', (id) => {
+          console.log('called from Socket Context', id);
+          setMe(id);
+        });
 
         socket.on('callUser', ({ from, name: callerName, signal }) => {
           setCall({ isReceivedCall: true, from, name: callerName, signal });

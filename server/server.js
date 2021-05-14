@@ -3,19 +3,13 @@ const app = express();
 
 // required for socket.io
 const http = require('http');
-const server = http.createServer(app);
+// const server = http.createServer(app);
 
 // middleware package to enable cross-origin requests
 const cors = require('cors');
 const path = require('path');
 
 // socket.io library establishes a connection between two devices via WebSocksets
-const io = require('socket.io')(server, {
-  cors: {
-    origin: '*',
-    methods: ['GET', 'POST'],
-  },
-});
 
 app.use(cors());
 
@@ -26,8 +20,23 @@ app.get('/', (req, res, next) => {
 });
 
 // this gives us a personal id on the front-end
+
+const port = process.env.PORT || 3000;
+
+const server = app.listen(port, () => {
+  console.log(`app is listening at port ${port}!`);
+});
+
+const io = require('socket.io')(server, {
+  cors: {
+    origin: '*',
+    methods: ['GET', 'POST'],
+  },
+});
+
 io.on('connection', (socket) => {
   // emits event to all connected sockets
+  console.log('connected');
   socket.emit('me', socket.id);
   // sends message to everyone except for emitting socket
   socket.on('disconnect', () => {
@@ -41,16 +50,4 @@ io.on('connection', (socket) => {
   });
 });
 
-const port = process.env.PORT || 3000;
-
-const init = async () => {
-  try {
-    server.listen(port, () => {
-      console.log(`app is listening at port ${port}!`);
-    });
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-init();
+module.exports = io;
