@@ -16,8 +16,10 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   paper: {
-    padding: '10px',
+    padding: '20px',
     margin: '10px',
+    backgroundColor: '#a6ce94',
+    borderRadius: 0,
   },
 }));
 

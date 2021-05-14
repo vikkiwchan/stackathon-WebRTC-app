@@ -39,7 +39,9 @@ const useStyles = makeStyles((theme) => ({
     padding: 20,
   },
   paper: {
-    padding: '10px 20px',
+    padding: '10 20px',
+    backgroundColor: '#a387bc',
+    borderRadius: 0,
   },
 }));
 
@@ -51,7 +53,8 @@ const Options = ({ children }) => {
 
   return (
     <Container className={classes.container}>
-      <Paper elevation={10} className={classes.paper}>
+      <Paper className={classes.paper}>
+        {children}
         <form className={classes.root} noValidate autoComplete='off'>
           <Grid container className={classes.gridContainer}>
             <Grid item xs={12} md={6} className={classes.padding}>
@@ -63,6 +66,7 @@ const Options = ({ children }) => {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 fullWidth
+                color='secondary'
               />
               <CopyToClipboard text={me} className={classes.margin}>
                 <Button
@@ -84,6 +88,7 @@ const Options = ({ children }) => {
                 value={idToCall}
                 onChange={(e) => setIdToCall(e.target.value)}
                 fullWidth
+                color='secondary'
               />
               {callAccepted && !callEnded ? (
                 <Button
@@ -111,7 +116,6 @@ const Options = ({ children }) => {
             </Grid>
           </Grid>
         </form>
-        {children}
       </Paper>
     </Container>
   );

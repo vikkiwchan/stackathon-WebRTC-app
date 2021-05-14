@@ -8,12 +8,27 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
+  shadows: ['none'],
   typography: {
     h2: {
       fontFamily: 'Poppins, sans-serif',
+      fontWeight: 'bold',
     },
-    p: {
-      fontFamily: 'Source Sans Pro, serif',
+    h5: {
+      fontFamily: 'Poppins, sans-serif',
+      fontWeight: 400,
+    },
+    h6: {
+      fontFamily: 'Poppins, sans-serif',
+      fontWeight: 400,
+    },
+  },
+  palette: {
+    primary: {
+      main: '#221f20',
+    },
+    secondary: {
+      main: '#f7e383',
     },
   },
 });

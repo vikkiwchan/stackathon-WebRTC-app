@@ -1,15 +1,18 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #e6ddca;
+  background-color: #f17550;
 }
 
 p {
-  font-family: 'Source Sans Pro', serif;
-  color: #303030;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  color: #221f20;
 }
 
-h2 {
+h2,
+h3 {
   font-family: 'Poppins', sans-serif;
-  color: #576636;
+  font-weight: bold;
+  color: #221f20;
 }
